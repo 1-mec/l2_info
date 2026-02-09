@@ -1,4 +1,4 @@
-## ex 2 : 
+## ex 2 : 
 
 <img width="672" height="157" alt="image" src="https://github.com/user-attachments/assets/d39255b2-0221-49c6-82c6-2da09d0dfc0c" />
 
@@ -18,10 +18,16 @@ last step
 
 <img width="863" height="499" alt="image" src="https://github.com/user-attachments/assets/e6ab6351-bfca-4a8b-9905-aca8fd9eeaab" />
 
+## ex3 :
 
-## ex3 :
+<img width="1071" height="433" alt="image" src="https://github.com/user-attachments/assets/68df9d24-ee2c-41cf-a61f-e6da77de0d57" />
 
-<img width="1086" height="493" alt="image" src="https://github.com/user-attachments/assets/8755e47f-77e2-49de-9a1f-c4efd53e61a0" />
+
+#### Consultation :
+- Client demande les infos
+- Accès aux infos du conducteur, véhicule et trajet 
+- Evaluation des avis du conducteur
+
 
 
 
