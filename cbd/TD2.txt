@@ -1,0 +1,56 @@
+EX1 :
+demoonstration 
+1. On a X->Y(Donné)
+2. Par augmentation: XW->YW
+3. On a YW->Z
+4. Par transitivité : XW-Z
+
+EX2 :
+dmonstration                            | Correction
+1. On a x->YZ                           | on a x->yz
+2. Par augmentation on a XZ->YZ         | par décomposition x->y & x->z
+3. On a Z->CW                           | on a z->cw
+4. Par Décomposition on a Z->C & Z->W   | par décomposition z->c et z->w(ignoré)
+5. On se débarasse de Z->W              | on a x->z et z->c par transitivité : x->c
+6. Par transitivité, on a X->YZC        | par union on a x->yzc
+
+Ex3                                               | Correction
+démonstration                                     | 1) POUR AB->E                | 2) pour bg->c                |3) ab->g
+1. on a ce->gh                                    | on a b->d                    | on a g->a                    | on a ab->c
+2. par décomposition on a ce->g & ce->h           | par augmentation on a AB-AD  | par augmentation on a bg->ba | on a ab->e
+3. on a ab->c                                     | par décomposition on a AB->D | on a ab->c                   | par union on a ab implique ab->ce
+4. par transitiité on a ab->d et ab->cd et ab->e  | on a ab->c                   | par transitivité on a bg->c  | on a ce->gh
+4. on a cd->e                                     | par union on a ab-cd         |                              | par transitivité on a ab->gh
+6. par transitivité on a cd->gh                   | par transitivité ab-> e      |                              | par déomposition on a ab->g
+7. 
+
+1. on a ab->e
+2. par union on a ab->ce 
+3. on a ce->gh 
+4. par transitivité on a ab->
+
+Ex6 :
+{a,b}+ = {a,b,c,e,f}
+
+ex7 :
+{a,c}+ = {a,c,b,d,e}
+
+ex8 :
+
+a->c,c->b,c->d
+ex9
+1. a->b,ab->c,ab->d
+2. a est la seule clé
+
+ex10
+a->b,a->c
+
+ex11
+1 . a->b,a->c
+2. jsp
+3. jsp
+4. oui
+5. a+ = {a,b,c} b+ = {b,a,c}
+6. non
+
+ex12
