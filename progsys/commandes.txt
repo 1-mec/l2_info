@@ -1,2 +1,0 @@
-gcc {file} -o {compiler name} && ./{compiler name}
-gcc ex2.c -o res && ./res
