@@ -16,6 +16,7 @@ void init_processus_fils() {
 int main() {
     int t[N];
     int marche[N];
+    int en_pause[N];
 
     for (int i = 0; i < N; i++) {
         marche[i] = 1;
@@ -25,6 +26,7 @@ int main() {
         int pid = fork();
         if (pid == 0) init_processus_fils();
         t[i] = pid;
+        en_pause[i] = 0;
     }
     printf("Processus fils : ");
     for(int i=0;i<N;i++) {
@@ -37,30 +39,37 @@ int main() {
     do {
         printf("avant waitpid ...\n");
         r = waitpid(-1, &status, WSTOPPED | WCONTINUED );
-        printf(" ... waitpid a retourné %d\n\n", r);
-        for(int i=0;i<N;i++) {
-            if (r == t[i]) {
-                if (WIFSTOPPED(status)) {
-                    marche[i] = 0;
-                    printf("%d est en pause(à mimir) \n",t[i]);
-                } else if(WIFCONTINUED(status)) {
-                    marche[i] = 1;
-                    printf("%d charbonne smr\n",t[i]);
+        printf(" ... waitpid a retourné %d, le status = %d\n\n", r,status);
+        if (r > -1){
+            if (WIFSTOPPED(status)){
+                printf(" ... à mimir\n", WIFSTOPPED(status));
+            } else if(WIFCONTINUED(status)){
+                printf(" ... relancé\n", WIFCONTINUED(status));
+            }
+        }
+        for(int i = 0 ; i< N; i++){
+            if(t[i]==r){
+                if (WIFSTOPPED(status)){
+                    en_pause[i] = 1;
+                } else if(WIFCONTINUED(status)){
+                    en_pause[i] = 0;
                 }
             }
         }
-
-        printf("Marche ou pas\n");
-        for(int i=0;i<N;i++) {
-            printf("état = %d\n",marche[i]);
+        for(int i = 0; i < N;i++){
+            printf("processus no %d",t[i]);
+            if (en_pause[i]){
+                printf("en pause");
+            }
+            printf("-");
         }
 
     } while (r != -1);
 
     printf("fin du processus père\n");
     //faire des tets sur plusieurs terminals
-}
 
+}
 //  a - il à retourné les autre pid
 //  b - tant qu'on à pas entré ctrl+c pour sortir
 //  c - le processus parent s'eteint mais les fils sont toujours là
