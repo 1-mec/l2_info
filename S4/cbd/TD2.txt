@@ -54,9 +54,18 @@ ex11
 6. ( |= veut dier implique logiquement ) oui car on a a-> b et a->c | vérifier si bc est inclu dans {a}+ 
 
 ex12
-1. on à déjà c->a donc ce-> a est redondant, acd le fait déjà (dans acd on a a->b , c->b et d->b)
-2. a->c,b->c,b->d,c->d,a->b,d->e,d->g,g->b,c->g
-3. c car cg -> bd
-4. a->c,b->c,b->d,c->d,a->b,d->e,d->g,g->b,c->g
-5. bc->d donc redondant et cg->b 
+1. on à déjà c->a donc ce-> a est redondant, acd le fait déjà (dans acd on a a->b , c->b et d->b) | on a ce->ag par décomposition on a ce->a et ce->g donc redondant et cg->b : on a cg->bd donc cg->g.... c'est redondant
+2. a->c,b->c,b->d,c->d,a->b,d->e,d->g,g->b,c->g                                                   | ab->c,c->a bc->d,acd->b,d->eg,be->c,ce->g,cg->d
+3. c car cg -> bd                                                                                 | 
+__________________________________________________________________________________________________|
+3 correction : on test si a est superflu: {cb}+ = {c,b,d,e,g,a}, b inclu dans {cd}+, a superflu
+pareil pour b et d , on trouve que c est pas superflu et que d non plus
+__________________________________________________________________________________________________
+4. a->c,b->c,b->d,c->d,a->b,d->e,d->g,g->b,c->g                                                   | ab->c,c->a bc->d,cd->b,d->eg,be->c,ce->g,cg->d
+5. bc->d donc redondant et cg->b                                                                  | 
+__________________________________________________________________________________________________
+5. correction : cg -> d est redondante g->bd => cg->b et cg->d donc cg->d est redondante 
+- acd ->b est redondante :
+on calcule la fermeture de acd sans acd->b on retrouve {acd}+ = {a,c,d,e,g,b}, donc c'est redondant 
+__________________________________________________________________________________________________
 6. a->c,b->c,b->d,c->d,a->b,d->e,d->g,g->b,c->g
