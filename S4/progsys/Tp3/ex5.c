@@ -3,25 +3,26 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int main(int argc, char * argv[]){
-    if (argc != 2){
-        printf("nb arguments pas bon");
-        return 1;
+
+#define N 758
+
+int main() {
+  int fd = open("fichier.txt", O_RDONLY);
+  if (fd == -1) {
+    perror("Ouverture du fichier");
+  } else {
+    unsigned char msg[N+1];
+    int c;
+    int i = 0;
+    printf("===============================================================================\n");
+    for(int i = 0 ; i < 758; i++){
+        c = read(fd, msg, N);
+        if (c>0) {
+            msg[c] = 0; 
+        }
+        char cc = (char)c;
+        printf("0x%X\n",msg[i]);
     }
-
-    int fd = open("fic1" , O_RDWR | O_CREAT | O_APPEND , S_IRUSR | S_IROTH | S_IRGRP );
-
-    if (fd == -1){
-        perror("nop mdrr");
-    }
-
-    int buf = strlen(argv[1]);
-
-    for (int i = 0; i < 256 ; i++){
-        unsigned char x = i;
-        int c = write(fd,buf, strlen(&x));
-    }
-    
     close(fd);
-    return 0;
+  }
 }
