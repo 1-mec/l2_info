@@ -181,12 +181,51 @@ Prime
 #### 1
 rien à faire
 #### 2 
-rien à faire
+{(NoMachine,NoTechno)}+= {NoMachine,NoTechno,montant-prime,atelier,nom-tech}
 #### 3
-F' = {
+1nf ? -> oui atomique
+
+2nf ? -> non clé 2 attriubts
+
+#### 4
+NoMachine -> atelier
+
+NoTechn -> nom-techn
+
+(NoMachine, NoTechn) -> montant-prime
 ## ex 9
 #### 1
+- Matière,Rang -> NoEtud
+- NoEtud -> Matière,Rang
+#### 2
+- Matière,Rang -> NoEtud
+- NoEtud -> Matière
+- NoEtud -> Rang
+  #### 3
+clé candidat -> Matière && rang ainsi que Matière ,NoEtud && Rang
 
+ #### 4
+ c'est 1nf
+ 
+ c'est 2nf
+ 
+ c'est 3nf
 
+de plus , toutes sources de df est une clé donc la relation R eest en forme bcnf
 
+## ex 10
+#### 1
+ - Matière,Prof -> NoEtud
+ - NoEtud,Matière -> Prof
+#### 2
+rien à faire
 
+#### 3
+clé candidate -> (Matière,Prof) & (NoEtud,Matière)
+
+#### 4
+1nf oui
+2nf oui
+3nf oui
+
+bcnf
