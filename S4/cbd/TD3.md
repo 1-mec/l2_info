@@ -63,18 +63,81 @@ on peut supprimer la 3 et la 2
 
 on décompose en :
 - Departement (Classe,Cours,Module,Nb-h,No-Ens) ; Module
-- Etudiant(Mle-Etud,Note,Cours) ; Mle-Etud 
-
+- Etudiant(Mle-Etud,Note,Cours) ; Mle-Etud
+  
 ## ex3
+EMPLOYES (NumE, Nom, Salaire, Département, Bâtiment)
+
+#### 1 . Déterminer les dépendances fonctionnelles (voir TD1)
+- NumE -> NumE,Nom,Salaire,Departement
+- Departement -> Batiment
+
+#### 2. 
+- {NumE}+ = {Nom,Salaire,Département,Bâtiment}
+- a-1Fn ? oui car attributs = valeurs atomiques
+- b-Fn ? oui car la clé n'est pas décomposée
+- c-3Fn ? non car on a Departement -> Bâtiement
+
+#### 3.
+- Departement -> NumE
+#### correction
+- a. ouverture minimal
+NumE -> Nom
+
+NumE -> salaire
+
+NumE -> département
+
+Département -> Batiment
+
+- b. décomposition de df
+Employés(NUmE,Nom,Salaire,département)
+
+Département(département,batiment)
+
+- c. vérification
+
+On a : -NumE clé pour employé
+       
+       - Toutes les df sont préservées
+
+C'est en 3fn
+
+Employés(NUmE,Nom,Salaire,département)
+
+Département(département,batiment)
+
+## ex4
 Commandes (NumCom, DateCom, NumCli, AdrCli, NumProd, Prix, Qte)
 #### 1 . Déterminer les dépendances fonctionnelles
 - NumProd -> Prix
-- NumCom -> DateCom, NumCli, AdrCli, Prix, Qte
+- NumCom -> DateCom, NumCli, AdrCli, Prix, Qte, NumProduit
 
 #### 2 . Quelle(s) est(sont) la(les) clé(s) de cette relation ?
 - NumProd et NumCom
 
-#### 2 . En quelle forme normale elle est ? 
-- la relation est en 3nf
+#### 3 . En quelle forme normale elle est ? 
+- la relation est en 2nf car il y a qu'une clé
 
-  
+
+## ex5
+Projection (NoFilm, TitreFilm, DuréeFilm, NoSalle, CapacitéSalle,TypePlace, PrixPlace, DateProjection, HeureDeb)
+#### 1 . DF
+- NoSalle -> TitreFilm, DuréeFilm,NoSalle , CapaitéSalle, TypePlace, HeureDeb,DateProjection
+- NoFilm -> TitreFilm, HeureDeb, 
+
+#### 2 .  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
