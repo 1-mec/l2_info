@@ -161,7 +161,31 @@ Les informations à garder sont :
 - Produit(NoProd,Nom_Prod,Qte_Stock,Seuil,Fournisseur)
 - Fournisseur(Nom_Fourniseeur,Adresses_Fournisseur, Numero_Fournisseur)
 
+## ex 8
+piece
+#### 1 établir le (un) graphe minimum de ses dépendances
+- N_piece -> prix
+- N_piece -> libellé
+- N_piece -> catégorie
+- N_piece -> Tva
+- Catégorie -> Tva
 
+#### 2 réduction -> pas besoin
+#### 3 Redondance 
+- Df redondante :
+                  - Npiece -> TVA (déductible)
+  Donc ,
+  F' = {N_piece -> prix_unit,N_piece -> libéllé,N_piece ->  catégorie,catégorie -> tva}
+
+Prime 
+#### 1
+rien à faire
+#### 2 
+rien à faire
+#### 3
+F' = {
+## ex 9
+#### 1
 
 
 
