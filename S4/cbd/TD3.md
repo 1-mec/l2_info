@@ -97,8 +97,7 @@ Département(département,batiment)
 
 - c. vérification
 
-On a : -NumE clé pour employé
-       
+On a : - NumE clé pour employé
        - Toutes les df sont préservées
 
 C'est en 3fn
@@ -119,22 +118,48 @@ Commandes (NumCom, DateCom, NumCli, AdrCli, NumProd, Prix, Qte)
 #### 3 . En quelle forme normale elle est ? 
 - la relation est en 2nf car il y a qu'une clé
 
+#### correction
+#### 1
+- NumCom -> DateCom,NumCli,AdrCli
+- NumProd -> Prix
+- NumCom , NumProd -> gte
 
+#### 2 .clé 
+- {NumCom,NumProd}+ = {DateCom,NumCLi,AdrCli,Prix,gte}
+
+Donc clé = (NumCom,NumProd)
+
+#### 3 . Vérif
+- a . 1nf oui 
+- b . 2nf non -> prix dépend partiellement de la clé (NumProd->Prix)
+  
 ## ex5
 Projection (NoFilm, TitreFilm, DuréeFilm, NoSalle, CapacitéSalle,TypePlace, PrixPlace, DateProjection, HeureDeb)
-#### 1 . DF
+#### 1 . Déterminer les dépendances fonctionnelles (voir TD1)
 - NoSalle -> TitreFilm, DuréeFilm,NoSalle , CapaitéSalle, TypePlace, HeureDeb,DateProjection
 - NoFilm -> TitreFilm, HeureDeb, 
 
-#### 2 .  
+#### 2 . En déduire un schéma de relations en 3FN
+- NoSalle -> TitreFilm, DuréeFilm,NoSalle , CapaitéSalle, TypePlace, HeureDeb,DateProjection
+- NoFilm -> TitreFilm, HeureDeb, 
+
+## ex 6
+L'Entreprise Vendetout voudrait créer une base de données relationnelle pour automatiser la gestion de ses ventes
+et de ses approvisionnements. Elle gère d'une part des informations sur les commandes des clients, et d'autre
+part les produits en stock avec leurs fournisseurs.
+Les informations à garder sont :
+      
+      - Pour un client, un numéro unique, un nom ou raison sociale, le solde client et les adresses possibles de livraison. 
+      - Pour chaque commande de client, un numéro unique, la date de commande, l'adresse de livraison et les produits commandés avec la quantité éventuelle. 
+      - Pour un produit, on a un numéro unique, un nom, la quantité actuelle en stock, le seuil minimum, la liste des fournisseurs avec le prix correspondant.
+      - Les fournisseurs sont décrits quant à eux, par un numéro unique, un nom et une adresse.
 
 
-
-
-
-
-
-
+#### 1
+- Client(NoCli,Nom, Solde, adresses, date_commandes, NoCommande)
+- Commande (NoCommande,NumProduit, NomProduit, Qte)
+- Produit(NoProd,Nom_Prod,Qte_Stock,Seuil,Fournisseur)
+- Fournisseur(Nom_Fourniseeur,Adresses_Fournisseur, Numero_Fournisseur)
 
 
 
