@@ -1,4 +1,3 @@
-package tp;
 import java.lang.*;
 public class ex2 {
 

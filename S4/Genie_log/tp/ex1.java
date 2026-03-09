@@ -1,5 +1,3 @@
-package tp;
-
 import java.util.*;
 public class ex1{	
 	private static String test;
