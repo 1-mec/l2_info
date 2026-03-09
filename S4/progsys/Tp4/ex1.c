@@ -17,11 +17,18 @@ int main(int argc, char * argv[]) {
     pipe(tube);
 
     if (argc == 1){
-        printf("")
+        printf("ya 0 fichier\n");
+    } else if (argc == 2){
+        printf("ya 1 fiichier en argument\n");
+    } else {
+        perror("");
+        exit(-1);
     }
 
     int fs = fstat(tube[0],&st );
 
     printf("tube n°%d ,fd = %d , size = %d , mode = %d, inode = %d\n",tube[0],fs, st.st_size, st.st_mode, st.st_ino);
+
+
 
 }
