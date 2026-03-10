@@ -1,0 +1,129 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EX1
+1.
+− <2010, ‘A’, 4, ‘France’, ‘Europe’> 
+− <2010, ‘A’, 4, ‘Sweden’, ‘Europe’>
+− <2010, ‘A’, 5, ‘Colombia’, ‘America’>
+− <2014, ‘A’, 1, ‘XXX’, ‘Europe’>
+− <2014, ‘A’, 2, ‘France’, ‘America’>
+
+interdit car les clées primaires sont un couple année , team 
+2,
+2, 
+
+
+
+
+
+
+EX2
+
+
+
+aucunes ne fonctionnent car pas de continent dans C_gROUPS
+
+
+ex2. On a XXX en team , ce n’est pas normal car pas nom de Pays
+2.
+
+
+
+
+pas normal de ne ne pas voir de scorename ni goalscoreTeam alors que goalscore n’est pas nul
+
+EX3
+pour B
+1. SELECT DISTINCT t.team FROM B_GROUPS b 
+	inner join B_TOP t on t.cup = b.cup
+	where t.cup = 2010 and t.position =1;
+2. SELECT DISTINCT t.team FROM B_GROUPS b 
+	inner join B_TOP t on t.cup = b.cup
+	where t.cup = 2010 and t.position =2;
+3. SELECT * FROM `B_GROUPS` WHERE groupId = "H";
+4. SELECT DISTINCT b.groupId FROM `B_GROUPS` b
+	inner join B_TOP t on t.cup = b.cup 
+	WHERE t.team = "France" AND t.position = 1 OR t.position = 2 OR t.position = 3 OR t.position = 4
+
+5.SELECT groupId
+FROM `B_GROUPS` g
+INNER JOIN B_TOP t ON t.cup = g.cup
+WHERE g.cup = 2010 AND t.host IN (t.position = 1, t.position = 2,t.position = 3, t.position = 4);
+
+6. SELECT DISTINCT t.team, tr.team FROM `B_MATCHES` t 
+inner join B_MATCHES tr on t.cup = tr.cup
+WHERE t.matchDate = '22/6' AND t.cup = 2010 AND t.teamOrd = 1 AND tr.teamOrd = 2;
+
+7. SELECT a1.team FROM `B_MATCHES` a1 WHERE matchDate = '22/6' and a1.teamOrd = 1 AND cup = 2010 AND goals NOT LIKE '0:%'
+UNION
+(SELECT a2.team FROM `B_MATCHES` a2 WHERE matchDate = '22/6' and a2.teamOrd = 2 AND cup = 2010 AND goals NOT LIKE '%:0');
+
+8.SELECT a1.team FROM `B_MATCHES` a1 WHERE matchDate = '22/6' a1.teamOrd = 1 AND cup = 2010 AND LEFT(goals,1) > RIGHT(goals,1)
+UNION
+(SELECT a2.team FROM `B_MATCHES` a2 WHERE matchDate = '22/6' a2.teamOrd = 2 AND cup = 2010 AND LEFT(goals,1) < RIGHT(goals,1));
+
+9.
+SELECT a1.team FROM `B_MATCHES` a1 WHERE LEFT(goals,1) > 3
+UNION
+(SELECT a2.team FROM `B_MATCHES` a2 WHERE RIGHT(goals,1) > 3);
+
+10.
+ SELECT SUBSTRING(a1.stadium FROM LOCATE(',', a1.stadium)+2) FROM `B_MATCHES` a1 
+inner join B_MATCHES a2 on a1.cup=a2.cup 
+WHERE a1.cup = 2010 AND "France" IN (a1.teamOrd = 1, a2.teamOrd = 2);
+
+11. SELECT DISTINCT b.team FROM `B_TOP` t 
+ inner join B_MATCHES b on t.cup = b.cup
+WHERE t.position = 1 and t.position IS NOT NULL;
+12. SELECT DISTINCT a1.winner FROM `A_TOP` a1 INNER JOIN A_TOP a2 WHERE a1.winner = a2.host;
+13. SELECT winner FROM `A_TOP` WHERE winner IS NOT NULL
+GROUP BY winner
+HAVING COUNT(winner) > 1;
+14. SELECT winner FROM `A_TOP` WHERE cup =(SELECT MIN(cup) FROM a_top);
+15.SELECT DISTINCT winner
+FROM `A_TOP`
+GROUP BY winner
+HAVING COUNT(winner) > 1;
+16.SELECT DISTINCT winner
+FROM `A_TOP`
+GROUP BY winner
+HAVING COUNT(winner) > 1
+UNION (
+    SELECT runnerUp
+    FROM A_TOP
+    GROUP BY runnerUp
+    HAVING COUNT(runnerUp) > 1
+)
+UNION(
+    SELECT thirdPlace
+    FROM A_TOP
+    GROUP BY thirdPlace
+    HAVING COUNT(thirdPlace) > 1
+)
+UNION(
+    SELECT fourthPlace
+    FROM A_TOP
+    GROUP BY fourthPlace
+    HAVING COUNT(fourthPlace) > 1
+    );
+17.
+
