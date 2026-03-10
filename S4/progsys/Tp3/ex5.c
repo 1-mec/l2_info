@@ -1,28 +1,30 @@
 #include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <sys/file.h>
 
+int main(int argc, char *argv[]) {
+	/*
+	- si existant : ouverture
+	- si inexistant : création 
+	*/
+	// TRUNC = vider automatiquement contenu du fichier
+	int fd = open(argv[1],
+		O_RDONLY
+	);
+	if (fd == -1){
+		perror("Création du fichier");
+		exit(-1);
+	}
+	unsigned char c;
+	int a;
+	
+	do{
+		a = read(fd, &c, 1);
+		if (a == 1){
+			printf("%x\n", c);
+		}
+	} while (a > 0); //affiche trop (2 fois a)
+	close(fd);
 
-#define N 758
-
-int main() {
-  int fd = open("fichier.txt", O_RDONLY);
-  if (fd == -1) {
-    perror("Ouverture du fichier");
-  } else {
-    unsigned char msg[N+1];
-    int c;
-    int i = 0;
-    printf("===============================================================================\n");
-    for(int i = 0 ; i < 758; i++){
-        c = read(fd, msg, N);
-        if (c>0) {
-            msg[c] = 0; 
-        }
-        char cc = (char)c;
-        printf("0x%X\n",msg[i]);
-    }
-    close(fd);
-  }
 }

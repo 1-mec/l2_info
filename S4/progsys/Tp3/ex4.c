@@ -1,25 +1,31 @@
 #include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <sys/file.h>
 
-int main(int argc, char * argv[]){
-    if (argc != 2){
-        printf("nb arguments pas bon");
-        return 1;
-    }
+int main(int argc, char *argv[]) {
+	/*
+	- si existant : ouverture
+	- si inexistant : création 
+	*/
+	// TRUNC = vider automatiquement contenu du fichier
+	int fd = open("fic1",
+		O_WRONLY | O_CREAT | O_TRUNC,
+		S_IRUSR | S_IWUSR | S_IRGRP 
+	);
+	if (fd == -1){
+		perror("Création du fichier");
+		exit(-1);
+	}
+	unsigned char c;
+	int i;
+	
+	for (i=0; i<256; i++){
+		c=(char)i;
+		write(fd,&c,1);
+	}
+	close(fd);
 
-    int fd = open("fic1" , O_WRONLY | O_CREAT | O_APPEND , S_IRUSR | S_IWUSR | S_IRGRP );
-
-    if (fd == -1){
-        perror("nop mdrr");
-    }
-
-    for (int i = 0; i < 256 ; i++){
-        unsigned char x = &i;
-        int c = write(fd,x, strlen(&x));
-    }
-    
-    close(fd);
-    return 0;
 }
+
+
