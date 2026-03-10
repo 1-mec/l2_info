@@ -9,7 +9,11 @@ int main(int argc, char * argv[]){
         return 1;
     }
 
-    int fd = open(argv[1], O_WRONLY | O_CREAT | O_APPEND , S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+    int fd = open(argv[1], O_WRONLY | O_CREAT | O_EXCL | O_APPEND , S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+
+    if (fd == -1){
+        perror("");
+    }
 
     int c = write(fd,argv[2], strlen(argv[2]));
     
